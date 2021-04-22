@@ -1,0 +1,109 @@
+                                                               Object literal syntax 
+let objName = {}; 
+where the curly brackets enclose a/a set of key value pairs. Each pair is separated by a comma:
+Eg. const gardenFlowers = {
+    color: 'yellow',
+ 'pot type': 'clay'
+}; 
+
+                                                                Array literal syntax
+Arrays store any data type. Each content is called an element.
+
+let arrayName = [];
+
+                                                                Getters and Setters
+For the sake of minimizing RAM usage, getters store values that can be accessed later. 
+In other words, getters are methods that get and return the internal properties of an object.
+Getter syntax is the declaration of the word 'get' followed by a function with a code block. 
+eg. 
+const rainbowColors = {
+    color1: 'blue',
+    color2: 'purple',
+    get allColors (){
+       return{
+           this.color1;
+           this.color2;
+       }
+    }
+}
+
+Use the 'this' keyword to access the object's properties. (see above)
+In this project, we see that _courses is the object. When we call the getter methods, (each one referencing the obj's properties),
+we use the 'this' keyword to access THAT particular property. 
+In other words, when we use the *this* keyword, we are referencing the calling object's properties. In this case, the calling object is rainbowColors. 
+
+
+Setters are used to execute a function whenever a specified property is attempted to be changed. 
+Setters must take exactly one parameter. 
+eg. 
+const appleReleases = {
+    version1 : 'Mojave',
+    version2 : 'High-Sierra',
+    set version1(firstVersion){
+       if(typeof firstVersion === 'string'){
+           this.version1 = firstVersion;
+       }
+    }
+};
+
+With setters, we can use an if statement to check the value type.
+We then use the 'this' keyword to access the object's properties (see above).
+
+To call on a setter method, we first reassign the property key to a new value, then log that variable. 
+Note that we are calling on a property inside of an object, so we would have to use dot notation:
+
+1) = reassign the property's value:
+appleReleases.version1 = 'MacOS 10.14';
+console.log(appleReleases.version1);
+
+In this project, we set 
+
+Getters and setters can be used together. 
+
+In this project, #5 instructs to create a get method for the _courses property. 
+Recall that #2 specifies that _courses is a property that takes an object as its value. 
+The _courses property has three key value pairs. Unless specified, we would use the return keyword to return these values. 
+Recall that we access an object's properties by using the 'this' keyword. However, we can also use the short-hand deconstructing technique. 
+We can also just return _courses
+
+                                                                 Obj methods
+Luckily, we can create methods in objects. 
+The method is a key:value pair, where the key is the method's name, and the value is an anonymos function. 
+For the method, we can omit the colon and arrow syntax. 
+
+Eg. 
+invade: function(){};
+becomes
+invade(){};
+
+#7 creates a method with three parameters. .addDishToCourse() will be used to add a new dish to the specified course menu. 
+The specified course menu will be created later on. 
+
+#8 creates an object, dish, that has two key value pairs, with each referencing the parameters, dishName and priceName. 
+Recall that _courses is an object whose key's values are arrays. 
+The object, dish, with its key:value pairs, name: dishName and price:dishPrice, is then pushed into an appropriate array in the _courses object, based on the courseName that was passed in. 
+In other words, a differet dishName and dishPrice will be pushed into an array per course name specified. i.e if the course name is appetizers, a name and price would be pushed into appetizer's empty array.
+ We need this because we need to know the price per dish, be it an appetizer, main, or dessert. 
+
+#10 takes the method, getRandomDishes with one parameter, courseName. This method will create random dishes based on the arrays for each key in the _courses object. 
+That is, this method take each key's array (eg. appetizers : [];) and stores it in a variable called dishes. 
+Recall that we used the getter method to create a method, .courses() which returns an appetize, main, and dessert. 
+#10 then generates a random number that will be the length of the dish array. random number will then be used as the index to identify which element in the dishes array to randomly select. 
+
+#11 asks that we 
+1. create a function that will create a three course meal. Fist, this means that the code block should create three variables based on which dish opton in _courses. 
+2. The question specifies to make an appetizer variable whose value will come from calling the method getRandomDishFromCourse. Recall that the getRandomDishFromCourse method takes one parameter, courseName. 
+Therefore, we will take the generated index value that selects a dish from dishes. Recall that dishes holds this._courses[courseName]; which references the specified courses(keys) in _courses. This is why we specify each course in the parameter. 
+3a. Calculate a total price and returns a string that specifies the dishes, and price. 
+The total price will be calculated by adding the price of the appetizer, main and dessert. This will be stored in a variable, totalPrice.
+Reacll that these values are stored in objects, so we have to use dot notation to access them. 
+3b. Return a string that returns the name of each of the dishes and the total price of the meal. 
+
+To test the code, we must then create a menu. This menu will use the .addDishToCourse method which has three parameters, courseName, dishName, dishPrice.
+We call this method on the menu object, (we should know this), and pass in a value per parameter. Note that dishPrice is a number. 
+We would do this for each course type. 
+Finally, we call the .generateRandomMeal() method on menu and save that to a variable, meal. 
+Then, we log meal to the console.
+
+
+
